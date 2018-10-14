@@ -1,0 +1,61 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'optparse'
+require 'gym_finder/cli'
+
+options = {
+  gyms: [],
+  courts: [],
+  hours: [],
+  weekday: false,
+  weekend: false,
+  only_available: true
+}
+OptionParser.new do |parser|
+  parser.banner = "Usage: env GYM_FINDER_USERNAME=USR GYM_FINDER_PASSWORD=PWD #{File.basename __FILE__} [options]"
+
+  parser.on('-u USERNAME', '--username USERNAME', 'defaults to env GYM_FINDER_USERNAME') do |v|
+    options[:username] = v
+  end
+
+  parser.on('-p PASSWORD', '--password PASSWORD', 'defaults to env GYM_FINDER_PASSWORD') do |v|
+    options[:password] = v
+  end
+  
+  parser.on('-g name1,name2,name3', '--gyms name1,name2,name3', Array, 'gym name filter') do |names|
+    options[:gyms] = names
+  end
+
+  parser.on('-c name1,name2,name3', '--court name1,name2,name3', Array, 'court name filter') do |names|
+    options[:courts] = names
+  end
+
+  parser.on('-t h1,h2,h3', '--hours h1,h2,h3', Array, 'hour filter') do |hours|
+    options[:hours] = hours
+  end
+
+  parser.on('--[no-]weekend') do |v|
+    options[:weekend] = v
+  end
+
+  parser.on('--[no-]weekday') do |v|
+    options[:weekend] = v
+  end
+
+  parser.on('--[no-]only-available', 'show only available slots') do |v|
+    options[:only_available] = v
+  end
+
+  parser.on('--list-gyms', 'prints gyms') do
+    puts GymFinder::GYMS.map(&:name)
+    exit
+  end
+
+  parser.on('-h', '--help', 'prints this help') do
+    puts parser
+    exit
+  end
+end.parse!
+
+puts GymFinder::Cli.new(**options).perform.to_json

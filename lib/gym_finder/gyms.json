@@ -1,0 +1,62 @@
+[
+  {
+    "name": "中山運動中心",
+    "homepage": "http://cssc.cyc.org.tw/",
+    "reservation": "http://cyc.xuanen.com.tw/tp01.aspx"
+  },
+  {
+    "name": "南港運動中心",
+    "homepage": "https://ngsc.cyc.org.tw/",
+    "reservation": "http://cyc.xuanen.com.tw/tp02.aspx"
+  },
+  {
+    "name": "信義運動中心",
+    "homepage": "https://xysc.cyc.org.tw/",
+    "reservation": "http://cyc.xuanen.com.tw/tp04.aspx"
+  },
+  {
+    "name": "大安運動中心",
+    "homepage": "https://dasc.cyc.org.tw/",
+    "reservation": "http://cyc.xuanen.com.tw/tp03.aspx"
+  },
+  {
+    "name": "文山運動中心",
+    "homepage": "http://wssc.cyc.org.tw/",
+    "reservation": "http://cyc.xuanen.com.tw/tp06.aspx"
+  },
+  {
+    "name": "內湖運動中心",
+    "homepage": "https://nhsc.cyc.org.tw/",
+    "reservation": "https://scr.cyc.org.tw/tp12.aspx"
+  },
+  {
+    "name": "蘆洲國民運動中心",
+    "homepage": "http://lzcsc.cyc.org.tw/",
+    "reservation": "https://scr.cyc.org.tw/TP07.aspx"
+  },
+  {
+    "name": "土城國民運動中心",
+    "homepage": "https://tccsc.cyc.org.tw/",
+    "reservation": "https://scr.cyc.org.tw/tp08.aspx"
+  },
+  {
+    "name": "汐止國民運動中心",
+    "homepage": "http://xzcsc.cyc.org.tw/",
+    "reservation": "https://scr.cyc.org.tw/tp09.aspx"
+  },
+  {
+    "name": "永和國民運動中心",
+    "homepage": "https://yhcsc.cyc.org.tw/",
+    "reservation": "https://scr.cyc.org.tw/tp10.aspx"
+  },
+  {
+    "name": "中壢國民運動中心",
+    "homepage": "https://zlcsc.cyc.org.tw/",
+    "reservation": "https://scr.cyc.org.tw/tp15.aspx"
+  },
+  {
+    "name": "桃園國民運動中心",
+    "homepage": "https://tycsc.cyc.org.tw/",
+    "reservation": "https://scr.cyc.org.tw/tp13.aspx"
+  }
+]
