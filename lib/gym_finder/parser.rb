@@ -10,11 +10,11 @@ module GymFinder
   class Parser
     def parse_reservation(html)
       doc = Nokogiri::HTML(html)
-      selector = '#ContentPlaceHolder1_button_image > table > tr > td > img[onclick*="net_booking"]'
+      selector = 'img[onclick*="net_booking"]'
       Reservation.new.tap do |reservation|
         reservation.available_courts = doc.css(selector).map do |node|
           Reservation::Court.new.tap do |court|
-            court.name = node['alt']
+            court.name = node['title']
             court.pt = node['onclick'][/PT=(\d+)/, 1]
           end
         end
