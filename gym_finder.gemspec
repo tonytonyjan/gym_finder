@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name = 'gym_finder'
-  spec.version = '1.0.0'
+  spec.version = '1.0.1'
   spec.author = 'Jian Weihang'
   spec.email = 'tonytonyjan@gmail.com'
   spec.license = 'MIT'
