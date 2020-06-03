@@ -10,8 +10,15 @@ module GymFinder
       w.close
       r2, w2 = IO.pipe
       Open3.pipeline(
-        ['convert', '-', '-resize', '400%', '-threshold', '25%', '-'],
-        ['tesseract', 'stdin', 'stdout', '--psm', '8', '-c', 'tessedit_char_whitelist=0123456789', err: File.open("/dev/null", "wb")],
+        [
+          'convert', '-', '-channel', 'RGB', '-colorspace', 'GRAY',
+          '-depth', '1', '-negate',
+          '-define', 'connected-components:mean-color=true',
+          '-define', 'connected-components:area-threshold=2',
+          '-connected-components', '4',
+          '-crop', '60x17+4+4', '-'
+        ],
+        ['tesseract', 'stdin', 'stdout', '--psm', '8', '-c', 'tessedit_char_whitelist=0123456789', err: File.open('/dev/null', 'wb')],
         in: r,
         out: w2
       )
