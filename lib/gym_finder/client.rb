@@ -17,7 +17,7 @@ module GymFinder
     class Conn
       attr_accessor :cookie
       def initialize
-        @conn = EventMachine::HttpRequest.new('https://scr.cyc.org.tw/')
+        @conn = EventMachine::HttpRequest.new('https://scr.cyc.org.tw/', tls: { verify_peer: true })
         @pending = 0
         @processed = 0
       end
@@ -73,7 +73,7 @@ module GymFinder
     def initialize(
       username: ENV['GYM_FINDER_USERNAME'],
       password: ENV['GYM_FINDER_PASSWORD'],
-      retry_captcha: 3
+      retry_captcha: 30
     )
       @parser = Parser.new
       @username = username
@@ -81,10 +81,10 @@ module GymFinder
       @retry_captcha = retry_captcha
     end
 
-    def fetch(*params)
+    def fetch(**params)
       captcha_error_count = 0
       begin
-        _fetch(*params)
+        _fetch(**params)
       rescue CaptchaError => error
         captcha_error_count += 1
         raise error if captcha_error_count == @retry_captcha
@@ -117,7 +117,7 @@ module GymFinder
               Captcha_text: captcha_text
             }
           ) do |client|
-            raise CaptchaError if client.response.include?('驗證碼錯誤')
+            raise CaptchaError unless client.response.include?('修改會員資料')
             GYMS.select(&gym_filter).each do |gym|
               uri = URI(gym.reservation)
               conn.get(path: uri.path) do |client|
