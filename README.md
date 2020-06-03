@@ -100,6 +100,12 @@ $ gym_finder -g 南港 -c 桌球 -t 10-12,15 | ruby -r json -e 'puts JSON.pretty
 ]
 ```
 
+使用 docker：
+
+```
+$ docker run --rm -e GYM_FINDER_USERNAME=A123456789 -e GYM_FINDER_PASSWORD=****** tonytonyjan/gym_finder -g 中山 -c 羽球
+```
+
 ## 輸出格式
 
 `gym_finder` 輸出格式為 JSON，格式如下：
